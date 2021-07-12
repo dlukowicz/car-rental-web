@@ -2,14 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { CarService } from './car.service';
 import {Car} from "./car";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {CarDetailsModal} from './car-details-modal/car-details-modal.component'
 
 
 
-export interface DialogData {
-  animal: string;
-  name: string;
-  car: Car;
-}
 
 @Component({
   selector: 'app-root',
@@ -37,7 +33,7 @@ export class AppComponent {
 
   openDialog(car: Car): void {
 
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    const dialogRef = this.dialog.open(CarDetailsModal, {
       width: '700px',
       data: {name: car.name, animal: 'saf', car: car}
     });
@@ -53,19 +49,4 @@ export class AppComponent {
 }
 
 
-@Component({
-  selector: 'dialog-overview-example-dialog',
-  templateUrl: 'dialog-overview-example-dialog.html',
-})
-export class DialogOverviewExampleDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-}
 
