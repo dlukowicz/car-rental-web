@@ -16,9 +16,7 @@ export class AppComponent {
 
   cars: Car[] = [];
   gridColumns = 3;
-  animal= 'sa';
-  name= 'asd';
-
+  
 
   constructor(private carService: CarService,public dialog: MatDialog) {}
 
@@ -35,12 +33,11 @@ export class AppComponent {
 
     const dialogRef = this.dialog.open(CarDetailsModal, {
       width: '700px',
-      data: {name: car.name, animal: 'saf', car: car}
+      data: {car: car}
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      //this.animal = resul;
     });
   }
 

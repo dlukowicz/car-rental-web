@@ -2,12 +2,8 @@ import { Component, OnInit, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Car} from "../car";
 import {RentDetailsModalComponent} from '../rent-details-modal/rent-details-modal.component'
+import {DialogData} from "../dialog.data";
 
-export interface DialogData {
-  animal: string;
-  name: string;
-  car: Car;
-}
 
 @Component({
   selector: 'app-car-details-modal',
@@ -23,9 +19,6 @@ export class CarDetailsModal {
   onNoClick(): void {
     this.dialogRef.close();
   }
-
-  animal= 'sa';
-  name= 'asd';
 
 
   openRentDetailsDialog(car: Car): void {

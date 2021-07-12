@@ -1,10 +1,9 @@
 import { Component, OnInit,Inject } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Car} from "../car";
+import {DialogData} from "../dialog.data";
 
-export interface DialogData {
-  car: Car;
-}
+
 
 @Component({
   selector: 'app-rent-details-modal',
