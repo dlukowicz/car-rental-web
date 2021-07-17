@@ -1,7 +1,63 @@
-<h1 mat-dialog-title>{{data.car.name}}</h1>
+<h1 mat-dialog-title>Rent details for : {{data.car.name}}</h1>
 
+<div class="example-container">
 
+  <p>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your name</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="name" required>
+  </mat-form-field>
+  </p>
 
+  <p>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your surname</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="surname" required>
+  </mat-form-field>
+  </p>
+
+  <p>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your email</mat-label>
+    <input matInput placeholder="pat@example.com" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+  </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter a date range</mat-label>
+      <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+        <input matStartDate formControlName="start" placeholder="Start date">
+        <input matEndDate formControlName="end" placeholder="End date">
+      </mat-date-range-input>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-date-range-picker #picker></mat-date-range-picker>
+
+      <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+      <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+    </mat-form-field>
+  </p>
+
+  <p>Selected range: {{range.value | json}}</p>
+
+  <p>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select me</mat-label>
+      <mat-select>
+        <mat-option value="option">Krakow</mat-option>
+        <mat-option value="option">Katowice</mat-option>
+        <mat-option value="option">Warszawa</mat-option>
+        <mat-option value="option">Gdańsk</mat-option>
+
+      </mat-select>
+      <mat-hint align="end">Here's the dropdown arrow ^</mat-hint>
+    </mat-form-field>
+
+  </p>
+
+</div>
 
 <!--<div mat-dialog-content>-->
 <!--<p>What's your favorite animal?</p>-->
@@ -11,7 +67,7 @@
 <!--</mat-form-field>-->
 <!--</div>-->
 <div mat-dialog-actions>
-  <button mat-button >No Thanks</button>
-  <button mat-button   cdkFocusInitial>Confirm</button>
+  <button mat-button>No Thanks</button>
+  <button mat-button cdkFocusInitial (click)="rentCar(data.car)">Confirm</button>
 </div>
 

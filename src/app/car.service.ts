@@ -12,4 +12,7 @@ export class CarService {
     return Cars;
   }
 
+  rentCar(car: Car) {
+    console.log('service rent car')
+  }
 }
