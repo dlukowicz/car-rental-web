@@ -15,17 +15,20 @@ import { MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { CarDetailsModal } from './car-details-modal/car-details-modal.component';
 import { RentDetailsModalComponent } from './rent-details-modal/rent-details-modal.component';
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
+import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     CarDetailsModal,
-    RentDetailsModalComponent
+    RentDetailsModalComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatDatepickerModule,
     MatNativeDateModule,
     MatOptionModule,
-    MatSelectModule
+    MatSelectModule,
+    HttpClientModule,
+    FormsModule
 
   ],
   entryComponents: [CarDetailsModal],
