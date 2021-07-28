@@ -1,22 +1,27 @@
-
-
 <mat-toolbar color="primary">
-  <span>Card view demo</span>
+  <span>Card view demo
+  <nav>
+  <a routerLink="/login">Login</a>
+  </nav>
+  </span>
 </mat-toolbar>
+
+
 <div class="content">
+  <router-outlet></router-outlet>
   <div fxLayout="row wrap" fxLayoutGap="16px grid">
     <div [fxFlex]="(100/gridColumns) + '%'" fxFlex.xs="100%" fxFlex.sm="33%" *ngFor="let car of cars">
-      <mat-card class="mat-elevation-z4" >
+      <mat-card class="mat-elevation-z4">
         <mat-card-header>
           <mat-card-title>Car: {{car.name}}</mat-card-title>
         </mat-card-header>
         <img mat-card-image src="{{car.imgsrc}}">
         <mat-card-content>
           <!--<p>-->
-            <!--Fuel : {{car.fuel}}-->
+          <!--Fuel : {{car.fuel}}-->
           <!--</p>-->
           <mat-list class="list-horizontal">
-            <mat-list-item >
+            <mat-list-item>
               <i class="material-icons">timelapse</i>
               Car year : {{car.year}}
             </mat-list-item>
@@ -36,5 +41,8 @@
         </mat-card-actions>
       </mat-card>
     </div>
+
   </div>
+
 </div>
+

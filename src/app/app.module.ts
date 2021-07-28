@@ -19,8 +19,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
 import {MatSelectModule} from '@angular/material/select';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
+import {HttpInterceptorService} from "./http.interceptor.service";
 
 
 @NgModule({
@@ -53,7 +54,12 @@ import { LoginComponent } from './login/login.component';
 
   ],
   entryComponents: [CarDetailsModal],
-  providers: [MatDatepickerModule],
+  providers: [MatDatepickerModule,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

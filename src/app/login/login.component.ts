@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
+import {AuthenticationService} from "../authentication.service";
 
 @Component({
   selector: 'app-login',
@@ -10,35 +11,30 @@ import {Observable} from "rxjs";
 })
 export class LoginComponent implements OnInit {
 
-  url = 'http://localhost:8080/login';
-
-  model: any = {};
+  username = '';
+  password =  '';
+  errorMessage = 'Invalid Credentials';
+  successMessage =  ''
+  invalidLogin = false;
+  loginSuccess = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private http: HttpClient
-  ) { }
+    private authenticationService: AuthenticationService) {   }
 
   ngOnInit() {
-    sessionStorage.setItem('token', '');
   }
 
-  login() {
-
-    let result = this.http.post<Observable<boolean>>(this.url, {
-      userName: this.model.username,
-      password: this.model.password
-    }).subscribe((isValid: any) => {
-      if (isValid) {
-        sessionStorage.setItem(
-          'token',
-          btoa(this.model.username + ':' + this.model.password)
-        );
-        this.router.navigate(['']);
-      } else {
-        alert("Authentication failed.")
-      }
+  handleLogin() {
+    this.authenticationService.authenticationService(this.username, this.password).subscribe((result)=> {
+      this.invalidLogin = false;
+      this.loginSuccess = true;
+      this.successMessage = 'Login Successful.';
+      this.router.navigate(['/hello-world']);
+    }, () => {
+      this.invalidLogin = true;
+      this.loginSuccess = false;
     });
   }
 
