@@ -22,6 +22,10 @@ import {MatSelectModule} from '@angular/material/select';
 import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import {HttpInterceptorService} from "./http.interceptor.service";
+import { AvailableCarsComponent } from './available-cars/available-cars.component';
+import { MyRentalsComponent } from './my-rentals/my-rentals.component';
+import {MatTableModule} from "@angular/material/table";
+import {AuthenticationService} from "./authentication.service";
 
 
 @NgModule({
@@ -29,7 +33,9 @@ import {HttpInterceptorService} from "./http.interceptor.service";
     AppComponent,
     CarDetailsModal,
     RentDetailsModalComponent,
-    LoginComponent
+    LoginComponent,
+    AvailableCarsComponent,
+    MyRentalsComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +56,7 @@ import {HttpInterceptorService} from "./http.interceptor.service";
     MatOptionModule,
     MatSelectModule,
     HttpClientModule,
+    MatTableModule,
     FormsModule
 
   ],

@@ -3,6 +3,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import {Car} from "../car";
 import {RentDetailsModalComponent} from '../rent-details-modal/rent-details-modal.component'
 import {DialogData} from "../dialog.data";
+import {AuthenticationService} from "../authentication.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,7 +16,8 @@ export class CarDetailsModal {
 
   constructor(
     public dialogRef: MatDialogRef<RentDetailsModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,public dialog: MatDialog) {}
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,public dialog: MatDialog, private authenticationService: AuthenticationService,
+    private router: Router) {}
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -37,6 +40,17 @@ export class CarDetailsModal {
     //  //this.animal = resul;
     //});
   }
+
+  isLogged() {
+    return this.authenticationService.isUserLoggedIn()
+   }
+
+  redirectToLoginPage(){
+    this.dialogRef.close()
+    this.router.navigate(['/login']);
+  }
+
+
 
 
 }

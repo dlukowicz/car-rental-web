@@ -5,7 +5,7 @@ import {DialogData} from "../dialog.data";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CarService} from "../car.service";
 import {CarDetailsModal} from "../car-details-modal/car-details-modal.component";
-import {Reservation} from "../reservation";
+import {CreateReservation} from "../createReservation";
 
 
 
@@ -47,7 +47,7 @@ export class RentDetailsModalComponent {
 
 
    createReservation() {
-      let reservation : Reservation = {
+      let reservation : CreateReservation = {
         carId: this.data.car.id,
         name: this.name.value,
         surname: this.surname.value,

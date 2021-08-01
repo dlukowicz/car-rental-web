@@ -4,6 +4,7 @@ import { Cars } from './mock-cars';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {catchError} from "rxjs/operators";
+import {CreateReservation} from "./createReservation";
 import {Reservation} from "./reservation";
 
 @Injectable({
@@ -16,30 +17,24 @@ export class CarService {
   constructor(private http: HttpClient) {
   }
 
-  // getCars(): Car[] {
-  //
-  //
-  //   return Cars;
-  // }
-
    headerDict = {
     'Content-Type': 'application/json',
     'Accept': 'application/json',
     'Access-Control-Allow-Origin': '*',
   }
 
-  // requestOptions = {
-  //   headers: new Headers(this.headerDict),
-  // };
-
 
   getCars(): Observable<any> {
-    return this.http.get<Car>(this.endpoint + '/availablecars/',  { 'headers': this.headerDict })
+    return this.http.get<Car>(this.endpoint + '/availablecars',  { 'headers': this.headerDict })
   }
 
 
-  rentCar(reservation: Reservation): Observable<any> {
-    console.log('POST request')
-    return this.http.post<Reservation>(this.endpoint + '/reservations/',  reservation, { 'headers': this.headerDict })
+  rentCar(reservation: CreateReservation): Observable<any> {
+    return this.http.post<Reservation>(this.endpoint + '/reservations',  reservation, { 'headers': this.headerDict })
   }
+
+  getMyRentals(userId: number): Observable<any> {
+    return this.http.get<CreateReservation>(this.endpoint + '/reservations/' +  userId, { 'headers': this.headerDict })
+  }
+
 }

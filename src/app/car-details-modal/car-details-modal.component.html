@@ -30,5 +30,6 @@
 <!--</div>-->
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button  (click)="openRentDetailsDialog(data.car)"  cdkFocusInitial>Next</button>
+  <button mat-button  (click)="openRentDetailsDialog(data.car)" [style]="isLogged() ? '' : 'display:none'" cdkFocusInitial>Next</button>
+  <button mat-button [style]="isLogged() ? 'display:none' : ''" (click)="redirectToLoginPage()">Log to rent a car </button>
 </div>
