@@ -45,6 +45,11 @@ export class RentDetailsModalComponent {
     })
   }
 
+  onNoClick(): void {
+    this.dialog.closeAll()
+  }
+
+
 
    createReservation() {
       let reservation : CreateReservation = {

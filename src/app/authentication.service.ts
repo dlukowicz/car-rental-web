@@ -42,6 +42,7 @@ export class AuthenticationService {
 
   logout() {
     sessionStorage.removeItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME);
+    sessionStorage.removeItem(this.USER_ROLE_SESSION_ATTRIBUTE_NAME);
     this.username = null
     this.password = null;
   }

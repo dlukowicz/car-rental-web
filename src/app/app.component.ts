@@ -3,6 +3,8 @@ import { CarService } from './car.service';
 import {Car} from "./car";
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {CarDetailsModal} from './car-details-modal/car-details-modal.component'
+import {AuthenticationService} from "./authentication.service";
+import {Router} from "@angular/router";
 
 
 
@@ -18,7 +20,8 @@ export class AppComponent {
   gridColumns = 3;
 
 
-  constructor(private carService: CarService,public dialog: MatDialog) {}
+  constructor(private carService: CarService,public dialog: MatDialog,
+              private authenticationService: AuthenticationService, private router: Router) {}
 
   ngOnInit() {
     this.getCars();
@@ -43,6 +46,15 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
     });
+  }
+
+  logout() {
+    this.router.navigate(['/cars'])
+    this.authenticationService.logout()
+  }
+
+  showLogoutButton(){
+    return this.authenticationService.isUserLoggedIn() ? "" : "display:none"
   }
 
 
