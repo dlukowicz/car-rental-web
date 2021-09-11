@@ -53,7 +53,7 @@ export class MyRentalsComponent implements OnInit  {
 
 
   getMyRentals(): void {
-    this.carService.getMyRentals(2).subscribe((resp: any) => {
+    this.carService.getMyRentals(this.authenticationService.getLoggedUserId()).subscribe((resp: any) => {
       this.reservations = resp;
 
     },

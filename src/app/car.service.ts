@@ -33,7 +33,7 @@ export class CarService {
     return this.http.post<Reservation>(this.endpoint + '/reservations',  reservation, { 'headers': this.headerDict })
   }
 
-  getMyRentals(userId: number): Observable<any> {
+  getMyRentals(userId: string): Observable<any> {
     return this.http.get<CreateReservation>(this.endpoint + '/reservations/' +  userId, { 'headers': this.headerDict })
   }
 

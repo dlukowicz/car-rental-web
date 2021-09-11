@@ -6,6 +6,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CarService} from "../car.service";
 import {CarDetailsModal} from "../car-details-modal/car-details-modal.component";
 import {CreateReservation} from "../createReservation";
+import {AuthenticationService} from "../authentication.service";
 
 
 
@@ -16,7 +17,8 @@ import {CreateReservation} from "../createReservation";
 })
 export class RentDetailsModalComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData,public dialog: MatDialog, private carService: CarService) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData,public dialog: MatDialog, private carService: CarService,
+              private authenticationService: AuthenticationService) {}
 
   name = new FormControl('', );
   surname = new FormControl('', );
@@ -40,9 +42,12 @@ export class RentDetailsModalComponent {
     console.log(this.name.value)
     console.log(this.data.car.name)
 
-    this.carService.rentCar(this.createReservation()).subscribe(data => {
-      console.log(data)
-    })
+    this.carService.rentCar(this.createReservation()).subscribe(
+      data => {console.log(data)
+                    this.onNoClick()
+      },
+      error => {console.log('error')}
+      )
   }
 
   onNoClick(): void {
@@ -54,12 +59,14 @@ export class RentDetailsModalComponent {
    createReservation() {
       let reservation : CreateReservation = {
         carId: this.data.car.id,
+        userId: this.authenticationService.getLoggedUserId(),
         name: this.name.value,
         surname: this.surname.value,
         email: this.email.value,
         location: 'Krakow',
         startDate: this.range.value.start,
-        endDate: this.range.value.end
+        endDate: this.range.value.end,
+
 
       }
 
