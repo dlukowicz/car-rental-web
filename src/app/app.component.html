@@ -7,9 +7,9 @@
     <div>
       <a mat-button [routerLink]="'/login'"> login </a>
       <a mat-button [routerLink]="'/cars'"> cars </a>
-      <a mat-button [routerLink]="'/myrentals'"> my rentals </a>
+      <a mat-button [style]="showButtonForLoggedUser()" [routerLink]="'/myrentals'"> my rentals </a>
       <span class="logout-button"></span>
-      <a mat-button [style]="showLogoutButton()" (click)="logout()">logout</a>
+      <a mat-button [style]="showButtonForLoggedUser()" (click)="logout()">logout</a>
     </div>
   </mat-toolbar-row>
 </mat-toolbar>

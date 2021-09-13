@@ -3,7 +3,9 @@ export interface Car {
   name: string;
   fuel: string;
   year: number;
-  description:string;
+  description: string;
   mileage: number;
   imgsrc: string;
+  count: number;
+  price: number;
 }

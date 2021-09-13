@@ -1,7 +1,8 @@
 import {Car} from "./car";
 
 export interface Reservation {
-  car: Car
+  reservationId: number;
+  car: Car;
   startDate: string;
   endDate: string
 }

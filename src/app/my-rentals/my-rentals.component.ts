@@ -71,4 +71,8 @@ export class MyRentalsComponent implements OnInit  {
     return this.authenticationService.isAdmin() ? "" : "display:none"
   }
 
+  completeRental(reservation: Reservation) {
+    this.carService.completeRental(reservation).subscribe((resp: any) => {
+    })
+  }
 }

@@ -12,6 +12,7 @@ export class AuthenticationService {
   // BASE_PATH: 'http://localhost:8080'
   USER_NAME_SESSION_ATTRIBUTE_NAME = 'user'
   USER_ROLE_SESSION_ATTRIBUTE_NAME = 'role'
+  USER_TOKEN_SESSION_ATTRIBUTE_NAME = 'token'
 
    username: string | null | undefined
    password: string | null | undefined
@@ -25,7 +26,7 @@ export class AuthenticationService {
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
       this.username = username;
       this.password = password;
-      this.registerSuccessfulLogin(res.userId,res.roles, password);
+      this.registerSuccessfulLogin(res.userId,res.roles, username, password);
     }));
   }
 
@@ -35,9 +36,10 @@ export class AuthenticationService {
     return 'Basic ' + window.btoa(username + ":" + password)
   }
 
-  registerSuccessfulLogin(userId: string, roles: string, password: string) {
+  registerSuccessfulLogin(userId: string, roles: string,username:string, password: string) {
     sessionStorage.setItem(this.USER_NAME_SESSION_ATTRIBUTE_NAME, userId)
     sessionStorage.setItem(this.USER_ROLE_SESSION_ATTRIBUTE_NAME, roles)
+    sessionStorage.setItem(this.USER_TOKEN_SESSION_ATTRIBUTE_NAME, this.createBasicAuthToken(username, password))
   }
 
   logout() {

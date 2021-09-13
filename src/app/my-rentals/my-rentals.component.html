@@ -32,7 +32,7 @@
   <ng-container matColumnDef="actions">
     <th mat-header-cell  *matHeaderCellDef> Actions </th>
     <td mat-cell *matCellDef="let element" >
-      <button mat-raised-button color="primary" [style]="showCompleteButton()" mat-button >Complete rental </button>
+      <button mat-raised-button color="primary" [style]="showCompleteButton()" (click)="completeRental(element)" mat-button >Complete rental </button>
     </td>
 
   </ng-container>

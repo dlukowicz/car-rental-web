@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Car } from './car';
-import { Cars } from './mock-cars';
+
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {catchError} from "rxjs/operators";
@@ -33,8 +33,17 @@ export class CarService {
     return this.http.post<Reservation>(this.endpoint + '/reservations',  reservation, { 'headers': this.headerDict })
   }
 
+  completeRental(reservation: Reservation){
+    const httpData = {
+      headers: this.headerDict,
+      body: reservation,
+    };
+
+    return this.http.delete(this.endpoint + '/reservations', httpData)
+  }
+
   getMyRentals(userId: string): Observable<any> {
-    return this.http.get<CreateReservation>(this.endpoint + '/reservations/' +  userId, { 'headers': this.headerDict })
+    return this.http.get<CreateReservation>(this.endpoint + '/reservations/user/' +  userId, { 'headers': this.headerDict })
   }
 
 }
