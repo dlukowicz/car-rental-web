@@ -55,6 +55,10 @@ export class AppComponent {
     return this.authenticationService.isUserLoggedIn() ? "" : "display:none"
   }
 
+  isAdmin(){
+    return this.authenticationService.isAdmin()
+  }
+
 
 
 }
