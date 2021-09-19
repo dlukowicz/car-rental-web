@@ -63,8 +63,6 @@ export class MyRentalsComponent implements OnInit  {
         }
 
       });
-    console.log("reservation" + this.reservations)
-    //this.cars = this.carService.getCars();
   }
 
   showCompleteButton(){

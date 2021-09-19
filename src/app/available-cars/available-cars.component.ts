@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Car} from "../car";
 import {CarService} from "../car.service";
 import {MatDialog} from "@angular/material/dialog";
@@ -16,7 +16,8 @@ export class AvailableCarsComponent implements OnInit {
   gridColumns = 3;
 
 
-  constructor(private carService: CarService,public dialog: MatDialog) {}
+  constructor(private carService: CarService, public dialog: MatDialog) {
+  }
 
   ngOnInit() {
     this.getCars();
@@ -26,9 +27,8 @@ export class AvailableCarsComponent implements OnInit {
   getCars(): void {
     this.carService.getCars().subscribe((resp: any) => {
       this.cars = resp;
-      console.log(this.cars);
     });
-    //this.cars = this.carService.getCars();
+
   }
 
   openDialog(car: Car): void {
@@ -39,7 +39,6 @@ export class AvailableCarsComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 

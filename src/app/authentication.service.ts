@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import {User} from "./user";
+import {environment} from "../environments/environment";
 
 
 @Injectable({
@@ -22,7 +23,7 @@ export class AuthenticationService {
   }
 
   authenticationService(username: string, password: string) {
-    return this.http.get<User>(`http://localhost:8080/auth/basicauth`,
+    return this.http.get<User>(environment.baseUrl + 'auth/basicauth',
       { headers: { authorization: this.createBasicAuthToken(username, password) } }).pipe(map((res) => {
       this.username = username;
       this.password = password;
@@ -31,8 +32,6 @@ export class AuthenticationService {
   }
 
   createBasicAuthToken(username: string, password: string) {
-    console.log('login to ' + username)
-    console.log('password ' + password)
     return 'Basic ' + window.btoa(username + ":" + password)
   }
 

@@ -6,13 +6,14 @@ import {Observable} from "rxjs";
 import {catchError} from "rxjs/operators";
 import {CreateReservation} from "./createReservation";
 import {Reservation} from "./reservation";
+import {environment} from "../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
 
-  endpoint = 'http://localhost:8080';
+  endpoint = environment.baseUrl;
 
   constructor(private http: HttpClient) {
   }
@@ -25,12 +26,12 @@ export class CarService {
 
 
   getCars(): Observable<any> {
-    return this.http.get<Car>(this.endpoint + '/availablecars',  { 'headers': this.headerDict })
+    return this.http.get<Car>(this.endpoint + 'availablecars',  { 'headers': this.headerDict })
   }
 
 
   rentCar(reservation: CreateReservation): Observable<any> {
-    return this.http.post<Reservation>(this.endpoint + '/reservations',  reservation, { 'headers': this.headerDict })
+    return this.http.post<Reservation>(this.endpoint + 'reservations',  reservation, { 'headers': this.headerDict })
   }
 
   completeRental(reservation: Reservation){
@@ -39,11 +40,11 @@ export class CarService {
       body: reservation,
     };
 
-    return this.http.delete(this.endpoint + '/reservations', httpData)
+    return this.http.delete(this.endpoint + 'reservations', httpData)
   }
 
   getMyRentals(userId: string): Observable<any> {
-    return this.http.get<CreateReservation>(this.endpoint + '/reservations/user/' +  userId, { 'headers': this.headerDict })
+    return this.http.get<CreateReservation>(this.endpoint + 'reservations/user/' +  userId, { 'headers': this.headerDict })
   }
 
 }

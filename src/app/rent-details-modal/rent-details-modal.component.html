@@ -3,25 +3,25 @@
 <div class="example-container">
 
   <p>
-  <mat-form-field appearance="fill">
-    <mat-label>Enter your name</mat-label>
-    <input matInput  [formControl]="name" required>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your name</mat-label>
+      <input matInput [formControl]="name" required>
+    </mat-form-field>
   </p>
 
   <p>
-  <mat-form-field appearance="fill">
-    <mat-label>Enter your surname</mat-label>
-    <input matInput  [formControl]="surname" required>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your surname</mat-label>
+      <input matInput [formControl]="surname" required>
+    </mat-form-field>
   </p>
 
   <p>
-  <mat-form-field appearance="fill">
-    <mat-label>Enter your email</mat-label>
-    <input matInput placeholder="pat@example.com" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Enter your email</mat-label>
+      <input matInput placeholder="pat@example.com" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
   </p>
 
   <p>
@@ -43,7 +43,7 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Select location</mat-label>
-      <mat-select>
+      <mat-select >
         <mat-option value="option">Krakow</mat-option>
         <mat-option value="option">Katowice</mat-option>
         <mat-option value="option">Warszawa</mat-option>
@@ -57,13 +57,6 @@
 
 </div>
 
-<!--<div mat-dialog-content>-->
-<!--<p>What's your favorite animal?</p>-->
-<!--<mat-form-field appearance="fill">-->
-<!--<mat-label>Favorite Animal</mat-label>-->
-<!--<input matInput >-->
-<!--</mat-form-field>-->
-<!--</div>-->
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
   <button mat-button cdkFocusInitial (click)="rentCar(data.car)">Confirm</button>

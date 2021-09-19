@@ -3,13 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Car} from "./car";
 import {User} from "./user";
+import {environment} from "../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  endpoint = 'http://localhost:8080';
+  endpoint = environment.baseUrl
 
   constructor(private http: HttpClient) {
   }
@@ -21,16 +22,8 @@ export class UserService {
   }
 
   getUserLogged(){
-    return this.http.get<User>(this.endpoint + '/auth/getUserLogged',  { 'headers': this.headerDict })
+    return this.http.get<User>(this.endpoint + 'auth/getUserLogged',  { 'headers': this.headerDict })
   }
 
-  // isAdmin()  {
-  //  let result = false
-  //   this.getUserLogged().subscribe(data => {
-  //     result = data.roles.includes('ROLE_ADMIN')
-  //   })
-  //
-  //   return result
-  // }
 
 }

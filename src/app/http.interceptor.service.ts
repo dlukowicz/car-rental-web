@@ -11,8 +11,6 @@ export class HttpInterceptorService implements HttpInterceptor {
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (this.authenticationService.isUserLoggedIn() && req.url.indexOf('basicauth') === -1) {
-      console.log('intercept username '+ this.authenticationService.username )
-      console.log('intercept pass '+ this.authenticationService.password )
 
       const authReq = req.clone({
         headers: new HttpHeaders({

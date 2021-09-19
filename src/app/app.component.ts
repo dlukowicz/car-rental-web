@@ -29,9 +29,7 @@ export class AppComponent {
   getCars(): void {
     this.carService.getCars().subscribe((resp: any) => {
       this.cars = resp;
-      console.log(this.cars);
     });
-    //this.cars = this.carService.getCars();
   }
 
   openDialog(car: Car): void {
@@ -42,7 +40,6 @@ export class AppComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
     });
   }
 

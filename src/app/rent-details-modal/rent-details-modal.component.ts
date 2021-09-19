@@ -1,4 +1,4 @@
-import { Component, OnInit,Inject } from '@angular/core';
+import {Component, OnInit, Inject} from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import {Car} from "../car";
 import {DialogData} from "../dialog.data";
@@ -9,7 +9,6 @@ import {CreateReservation} from "../createReservation";
 import {AuthenticationService} from "../authentication.service";
 
 
-
 @Component({
   selector: 'app-rent-details-modal',
   templateUrl: './rent-details-modal.component.html',
@@ -17,11 +16,12 @@ import {AuthenticationService} from "../authentication.service";
 })
 export class RentDetailsModalComponent {
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData,public dialog: MatDialog, private carService: CarService,
-              private authenticationService: AuthenticationService) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData, public dialog: MatDialog, private carService: CarService,
+              private authenticationService: AuthenticationService) {
+  }
 
-  name = new FormControl('', );
-  surname = new FormControl('', );
+  name = new FormControl('',);
+  surname = new FormControl('',);
   email = new FormControl('', [Validators.required, Validators.email]);
 
   range = new FormGroup({
@@ -38,16 +38,14 @@ export class RentDetailsModalComponent {
   }
 
   rentCar(car: Car): void {
-    console.log(this.email.value)
-    console.log(this.name.value)
-    console.log(this.data.car.name)
 
     this.carService.rentCar(this.createReservation()).subscribe(
-      data => {console.log(data)
-                    this.onNoClick()
+      data => {
+        this.onNoClick()
       },
-      error => {console.log('error')}
-      )
+      error => {
+      }
+    )
   }
 
   onNoClick(): void {
@@ -67,10 +65,9 @@ export class RentDetailsModalComponent {
         startDate: this.range.value.start,
         endDate: this.range.value.end,
 
+    }
 
-      }
-
-     return reservation
-   }
+    return reservation
+  }
 
 }

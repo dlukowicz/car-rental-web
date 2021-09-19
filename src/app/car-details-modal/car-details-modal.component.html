@@ -3,10 +3,8 @@
 <img mat-card-image src="{{data.car.imgsrc}}">
 <p>{{data.car.description}}</p>
 
-
-
 <mat-list class="list-horizontal">
-  <mat-list-item >
+  <mat-list-item>
     <i class="material-icons">timelapse</i>
     Car year : {{data.car.year}}
   </mat-list-item>
@@ -25,15 +23,11 @@
 </mat-list>
 
 
-<!--<div mat-dialog-content>-->
-  <!--<p>What's your favorite animal?</p>-->
-  <!--<mat-form-field appearance="fill">-->
-    <!--<mat-label>Favorite Animal</mat-label>-->
-    <!--<input matInput >-->
-  <!--</mat-form-field>-->
-<!--</div>-->
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">No Thanks</button>
-  <button mat-button  (click)="openRentDetailsDialog(data.car)" [style]="isLogged() ? '' : 'display:none'" cdkFocusInitial>Next</button>
-  <button mat-button [style]="isLogged() ? 'display:none' : ''" (click)="redirectToLoginPage()">Log to rent a car </button>
+  <button mat-button (click)="openRentDetailsDialog(data.car)" [style]="isLogged() ? '' : 'display:none'"
+          cdkFocusInitial>Next
+  </button>
+  <button mat-button [style]="isLogged() ? 'display:none' : ''" (click)="redirectToLoginPage()">Log to rent a car
+  </button>
 </div>
