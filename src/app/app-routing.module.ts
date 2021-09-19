@@ -7,7 +7,8 @@ import {MyRentalsComponent} from "./my-rentals/my-rentals.component";
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'cars', component: AvailableCarsComponent},
-  {path: 'myrentals', component: MyRentalsComponent}
+  {path: 'myrentals', component: MyRentalsComponent},
+  {path: '', component: AvailableCarsComponent}
   ];
 export const routing = RouterModule.forRoot(routes);
 @NgModule({
